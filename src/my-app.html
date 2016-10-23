@@ -1,0 +1,48 @@
+<!-- import latest release version of all components from polygit -->
+<link rel="import" href="https://polygit.org/components/polymer/polymer.html">
+<link rel="import" href="https://polygit.org/components/iron-icons/iron-icons.html">
+<link rel="import" href="https://polygit.org/components/paper-material/paper-material.html">
+<link rel="import" href="icon-toggle.html">
+
+
+<dom-module id="icon-toggle-demo">
+  <template>
+    <style>
+      :host {
+        font-family: sans-serif;
+      };
+    </style>
+
+    <h3>Statically-configured icon-toggles</h3>
+
+    <icon-toggle toggle-icon="star"></icon-toggle>
+    <icon-toggle toggle-icon="star" pressed></icon-toggle>
+
+    <h3>Data-bound icon-toggle</h3>
+
+    <!-- use a computed binding to generate the message -->
+    <div><span>[[message(isFav)]]</span></div>
+
+    <!-- curly brackets ({{}}} allow two-way binding -->
+    <icon-toggle toggle-icon="favorite" pressed="{{isFav}}"></icon-toggle>
+    <paper-material elevation="0">0</paper-material>
+    <paper-material elevation="1">1</paper-material>
+    <paper-material elevation="2">2</paper-material>
+    <paper-material elevation="3">3</paper-material>
+    <paper-material elevation="4">4</paper-material>
+    <paper-material elevation="5">5</paper-material>
+  </template>
+
+  <script>
+    Polymer({
+      is: "icon-toggle-demo",
+      message: function(fav) {
+        if (fav) {
+          return "You really like me!";
+        } else {
+          return "Do you like me?";
+        }
+      }
+    });
+  </script>
+</dom-module>

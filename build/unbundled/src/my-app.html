@@ -1,0 +1,37 @@
+<html><head><link rel="import" href="https://polygit.org/components/polymer/polymer.html">
+<link rel="import" href="https://polygit.org/components/iron-icons/iron-icons.html">
+<link rel="import" href="https://polygit.org/components/paper-material/paper-material.html">
+<link rel="import" href="icon-toggle.html">
+
+
+</head><body><dom-module id="icon-toggle-demo">
+  <template>
+    <style>
+      :host {
+        font-family: sans-serif;
+      };
+    </style>
+
+    <h3>Statically-configured icon-toggles</h3>
+
+    <icon-toggle toggle-icon="star"></icon-toggle>
+    <icon-toggle toggle-icon="star" pressed=""></icon-toggle>
+
+    <h3>Data-bound icon-toggle</h3>
+
+    
+    <div><span>[[message(isFav)]]</span></div>
+
+    
+    <icon-toggle toggle-icon="favorite" pressed="{{isFav}}"></icon-toggle>
+    <paper-material elevation="0">0</paper-material>
+    <paper-material elevation="1">1</paper-material>
+    <paper-material elevation="2">2</paper-material>
+    <paper-material elevation="3">3</paper-material>
+    <paper-material elevation="4">4</paper-material>
+    <paper-material elevation="5">5</paper-material>
+  </template>
+
+  <script>Polymer({is:"icon-toggle-demo",message:function(e){return e?"You really like me!":"Do you like me?"}});</script>
+</dom-module>
+</body></html>
