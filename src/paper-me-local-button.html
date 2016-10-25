@@ -1,0 +1,26 @@
+<!-- import latest release version of all components from polygit -->
+
+<link rel="import" href="https://polygit.org/components/polymer/polymer.html">
+<link rel="import" href="paper-me-button.html">
+
+<dom-module id="paper-me-local-button">
+
+    <template strip-whitespace>
+        <style include="paper-me-button">
+            :host {
+                background: #f44336;
+                border-radius: 10px;
+            }
+        </style>
+
+        <content></content>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "paper-me-local-button",
+            behaviors: [Polymer.PaperButtonBehavior]
+        });
+    </script>
+</dom-module>

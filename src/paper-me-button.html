@@ -1,0 +1,27 @@
+<!-- import latest release version of all components from polygit -->
+
+<link rel="import" href="https://polygit.org/components/polymer/polymer.html">
+<link rel="import" href="https://polygit.org/components/iron-icons/iron-icons.html">
+<link rel="import" href="https://polygit.org/components/paper-button/paper-button.html">
+
+<dom-module id="paper-me-button">
+
+    <template strip-whitespace>
+        <style include="paper-button">
+            :host {
+                background: #cddc39;
+                border-radius: 0;
+            }
+        </style>
+
+        <content></content>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "paper-me-button",
+            behaviors: [Polymer.PaperButtonBehavior]
+        });
+    </script>
+</dom-module>

@@ -10,13 +10,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>My App</title>
-    <meta name="description" content="My App description">
+    <title>Polymerize</title>
+    <meta name="description" content="Polymerize">
 
     <link rel="icon" href="/images/favicon.ico">
 
@@ -45,51 +46,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-tap-highlight" content="no">
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
     <script>
-      // Setup Polymer options
-      window.Polymer = {
-        dom: 'shadow',
-        lazyRegister: true
-      };
-
-      // Load webcomponentsjs polyfill if browser does not support native Web Components
-      (function() {
-        'use strict';
-
-        var onload = function() {
-          // For native Imports, manually fire WebComponentsReady so user code
-          // can use the same code path for native and polyfill'd imports.
-          if (!window.HTMLImports) {
-            document.dispatchEvent(
-              new CustomEvent('WebComponentsReady', {bubbles: true})
-            );
-          }
+        // Setup Polymer options
+        window.Polymer = {
+            dom: 'shadow',
+            lazyRegister: true
         };
 
-        var webComponentsSupported = (
-          'registerElement' in document
-          && 'import' in document.createElement('link')
-          && 'content' in document.createElement('template')
-        );
+        // Load webcomponentsjs polyfill if browser does not support native Web Components
+        (function() {
+            'use strict';
 
-        if (!webComponentsSupported) {
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
-          script.onload = onload;
-          document.head.appendChild(script);
-        } else {
-          onload();
+            var onload = function() {
+                // For native Imports, manually fire WebComponentsReady so user code
+                // can use the same code path for native and polyfill'd imports.
+                if (!window.HTMLImports) {
+                    document.dispatchEvent(
+                        new CustomEvent('WebComponentsReady', {
+                            bubbles: true
+                        })
+                    );
+                }
+            };
+
+            var webComponentsSupported = (
+                'registerElement' in document &&
+                'import' in document.createElement('link') &&
+                'content' in document.createElement('template')
+            );
+
+            if (!webComponentsSupported) {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
+                script.onload = onload;
+                document.head.appendChild(script);
+            } else {
+                onload();
+            }
+        })();
+
+        // Load pre-caching Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js');
+            });
         }
-      })();
-
-      // Load pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js');
-        });
-      }
     </script>
 
     <link rel="import" href="src/my-app.html">
@@ -97,67 +100,83 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="https://polygit.org/components/paper-styles/paper-styles.html">
 
     <style is="custom-style">
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', 'Noto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+        }
 
-      html, body{
-        height: 100%;
-        margin: 0;
-      }
+        paper-header-panel {
+            height: 100%;
+        }
 
-      paper-header-panel {
-        height: 100%;
-      }
+        .paper-header {
+            height: 60px;
+            font-size: 16px;
+            line-height: 60px;
+            padding: 0 10px;
+            color: white;
+            transition: height 0.2s;
+        }
 
-      .paper-header {
-        height: 60px;
-        font-size: 16px;
-        line-height: 60px;
-        padding: 0 10px;
-        color: white;
-        transition: height 0.2s;
-      }
+        .paper-header.tall {
+            height: 120px;
+        }
 
-      .paper-header.tall {
-        height: 120px;
-      }
+        .paper-header.medium-tall {
+            height: 100px;
+            line-height: 50px;
+        }
 
-      .paper-header.medium-tall {
-        height: 100px;
-        line-height: 50px;
-      }
+        .content {
+            margin: 0 10px;
+        }
 
-      .cover {
-        margin: 60px;
-      }
+        .cover {
+            margin: 60px;
+        }
 
-      .blue .paper-header {
-        background-color: var(--paper-light-blue-500);
-      }
-      .red .paper-header {
-        background-color: var(--paper-red-500);
-      }
-      .orange .paper-header {
-        background-color: var(--paper-amber-500);
-      }
-      .green .paper-header {
-        background-color: var(--paper-green-500);
-      }
-      .cyan .paper-header {
-        background-color: var(--paper-cyan-500);
-      }
-      .lime .paper-header {
-        background-color: var(--paper-lime-500);
-      }
-      .pink .paper-header {
-        background-color: var(--paper-pink-a200);
-      }
+        .blue .paper-header {
+            background-color: var(--paper-light-blue-500);
+        }
 
+        .red .paper-header {
+            background-color: var(--paper-red-500);
+        }
+
+        .orange .paper-header {
+            background-color: var(--paper-amber-500);
+        }
+
+        .green .paper-header {
+            background-color: var(--paper-green-500);
+        }
+
+        .cyan .paper-header {
+            background-color: var(--paper-cyan-500);
+        }
+
+        .lime .paper-header {
+            background-color: var(--paper-lime-500);
+        }
+
+        .pink .paper-header {
+            background-color: var(--paper-pink-a200);
+        }
     </style>
-  </head>
-  <body>
-  <paper-header-panel class="blue">
-      <div class="paper-header">standard</div>
-      <div class="content"><icon-toggle-demo></icon-toggle-demo></div>
+</head>
+
+<body>
+    <paper-header-panel class="blue">
+        <div class="paper-header">Polymerized</div>
+        <div class="content">
+            <my-app></my-app>
+        </div>
     </paper-header-panel>
 
-  </body>
+</body>
+
 </html>

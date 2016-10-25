@@ -2,47 +2,136 @@
 <link rel="import" href="https://polygit.org/components/polymer/polymer.html">
 <link rel="import" href="https://polygit.org/components/iron-icons/iron-icons.html">
 <link rel="import" href="https://polygit.org/components/paper-material/paper-material.html">
-<link rel="import" href="icon-toggle.html">
+<link rel="import" href="https://polygit.org/components/paper-button/paper-button.html">
+
+<link rel="import" href="paper-me-button.html">
+<link rel="import" href="paper-me-local-button.html">
 
 
-<dom-module id="icon-toggle-demo">
+<dom-module id="my-app">
   <template>
+
+    <h2>Play like a child with his Lego pieces! </h2>
+    <h3>Bring from public git repositories (across polygit)</h3>
+
+    <paper-button><iron-icon icon="check"></iron-icon>link</paper-button>
+    <paper-button raised><iron-icon icon="file-download"></iron-icon>raised</paper-button>
+    <paper-button toggles raised><iron-icon icon="favorite"></iron-icon>toggles</paper-button>
+    <paper-button disabled><iron-icon icon="block"></iron-icon>disabled</paper-button><br/>
+    <p>Example of a paper-button from Polymer Catalog:</p>
+    <p><p><pre><code id="code1" class="html">
+&lt;paper-button&gt;&lt;iron-icon icon=&quot;check&quot;&gt;&lt;/iron-icon&gt;link&lt;/paper-button&gt;
+    </code></pre></p>
+
+    <h3>Modify them in your private repositories</h3>
+    <paper-me-button><iron-icon icon="check"></iron-icon>link</paper-me-button>
+    <paper-me-button raised><iron-icon icon="file-download"></iron-icon>raised</paper-me-button>
+    <paper-me-button toggles raised><iron-icon icon="favorite"></iron-icon>toggles</paper-me-button>
+    <paper-me-button disabled><iron-icon icon="block"></iron-icon>disabled</paper-me-button>
+    <p>Customization of paper-button 'extending' the component. We inherit the behavior, and include its styles:</p>
+
+    Using:
+    <pre><code id="code2" class="html">
+&lt;paper-me-button&gt;&lt;iron-icon icon=&quot;check&quot;&gt;&lt;/iron-icon&gt;link&lt;/paper-me-button&gt;
+    </code></pre></p>
+
+
+    Customization of paper-button to paper-me-button, overloading styles with a diferent background and border-radius:
+    <p><pre><code id="code3" class="html">
+&lt;link rel=&quot;import&quot; href=&quot;https://polygit.org/components/paper-button/paper-button.html&quot;&gt;
+
+&lt;dom-module id=&quot;paper-me-button&quot;&gt;
+
+  &lt;template&gt;
+
+    &lt;style include=&quot;paper-button&quot;&gt;
+        :host {
+            background: #cddc39;
+            border-radius: 0;
+        }
+    &lt;/style&gt;
+
+        &lt;content&gt;&lt;/content&gt;
+
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        Polymer({
+            is: &quot;paper-me-button&quot;,
+            behaviors: [Polymer.PaperButtonBehavior]
+        });
+    &lt;/script&gt;
+
+&lt;/dom-module&gt;
+  </code>
+  </pre>
+  </p>
+
+    <h3>Adapt it for your local uses</h3>
+
+    <paper-me-local-button><iron-icon icon="check"></iron-icon>link</paper-me-local-button>
+    <paper-me-local-button raised><iron-icon icon="file-download"></iron-icon>raised</paper-me-local-button>
+    <paper-me-local-button toggles raised><iron-icon icon="favorite"></iron-icon>toggles</paper-me-local-button>
+    <paper-me-local-button disabled><iron-icon icon="block"></iron-icon>disabled</paper-me-local-button>
+
+    <p>Customization of paper-button to paper-me-button, overloading styles with a diferent background and border-radius:</p>
+
+    Using:
+    <pre><code id="code2" class="html">
+&lt;paper-me-local-button&gt;&lt;iron-icon icon=&quot;check&quot;&gt;&lt;/iron-icon&gt;link&lt;/paper-me-local-button&gt;
+    </code></pre></p>
+
+    Local customization of paper-me-button to paper-me-local-button, overloading styles with a diferent background and border-radius:
+    <p><pre><code id="code3" class="html">
+      &lt;link rel=&quot;import&quot; href=&quot;https://polygit.org/my-repo+my-organization+*/components/paper-me-local-button/paper-me-local-button.html&quot;&gt;
+
+      &lt;dom-module id=&quot;paper-me-local-button&quot;&gt;
+
+          &lt;template strip-whitespace&gt;
+              &lt;style include=&quot;paper-me-button&quot;&gt;
+                  :host {
+                      background: #f44336;
+                      border-radius: 10px;
+                  }
+              &lt;/style&gt;
+
+              &lt;content&gt;&lt;/content&gt;
+
+          &lt;/template&gt;
+
+          &lt;script&gt;
+              Polymer({
+                  is: &quot;paper-me-local-button&quot;,
+                  behaviors: [Polymer.PaperButtonBehavior]
+              });
+          &lt;/script&gt;
+      &lt;/dom-module&gt;
+  </code>
+  </pre>
+  </p>
+
     <style>
+
       :host {
         font-family: sans-serif;
       };
+.hljs{display:block;overflow-x:auto;padding:0.5em;background:#F0F0F0}.hljs,.hljs-subst{color:#444}.hljs-comment{color:#888888}.hljs-keyword,.hljs-attribute,.hljs-selector-tag,.hljs-meta-keyword,.hljs-doctag,.hljs-name{font-weight:bold}.hljs-type,.hljs-string,.hljs-number,.hljs-selector-id,.hljs-selector-class,.hljs-quote,.hljs-template-tag,.hljs-deletion{color:#880000}.hljs-title,.hljs-section{color:#880000;font-weight:bold}.hljs-regexp,.hljs-symbol,.hljs-variable,.hljs-template-variable,.hljs-link,.hljs-selector-attr,.hljs-selector-pseudo{color:#BC6060}.hljs-literal{color:#78A960}.hljs-built_in,.hljs-bullet,.hljs-code,.hljs-addition{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta-string{color:#4d99bf}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
     </style>
 
-    <h3>Statically-configured icon-toggles</h3>
-
-    <icon-toggle toggle-icon="star"></icon-toggle>
-    <icon-toggle toggle-icon="star" pressed></icon-toggle>
-
-    <h3>Data-bound icon-toggle</h3>
-
-    <!-- use a computed binding to generate the message -->
-    <div><span>[[message(isFav)]]</span></div>
-
-    <!-- curly brackets ({{}}} allow two-way binding -->
-    <icon-toggle toggle-icon="favorite" pressed="{{isFav}}"></icon-toggle>
-    <paper-material elevation="0">0</paper-material>
-    <paper-material elevation="1">1</paper-material>
-    <paper-material elevation="2">2</paper-material>
-    <paper-material elevation="3">3</paper-material>
-    <paper-material elevation="4">4</paper-material>
-    <paper-material elevation="5">5</paper-material>
   </template>
 
   <script>
+
     Polymer({
-      is: "icon-toggle-demo",
-      message: function(fav) {
-        if (fav) {
-          return "You really like me!";
-        } else {
-          return "Do you like me?";
-        }
+      is: "my-app",
+      ready: function(a){
+        hljs.highlightBlock(this.$.code1);
+        hljs.highlightBlock(this.$.code2);
+        hljs.highlightBlock(this.$.code3);
       }
     });
+
+
+
   </script>
 </dom-module>
