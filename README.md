@@ -24,6 +24,6 @@ routing for the app:
 
 ### More about this project
 
-More in Medium post:
+More in Medium post: [https://medium.com/@emarin/using-remote-polymer-components-d411ebb7525a](https://medium.com/@emarin/using-remote-polymer-components-d411ebb7525a)
 
 DEMO: [https://emarinizquierdo.github.io/polymerized/](https://emarinizquierdo.github.io/polymerized/)
